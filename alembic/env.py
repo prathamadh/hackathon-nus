@@ -9,15 +9,8 @@ from dotenv import load_dotenv
 
 from alembic import context
 
-try:
-    from backend.core.database import Base
-    import backend.models.icbt
-except ImportError as e:
-    import sys
-    print(f"Error importing Base: {e}", file=sys.stderr)
-    from sqlalchemy.orm import declarative_base
-
-    Base = declarative_base()
+from backend.core.database import Base
+import backend.models.user  # noqa: F401 — register model with Base metadata
 
 
 # this is the Alembic Config object, which provides
